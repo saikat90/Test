@@ -80,7 +80,7 @@ extension UIViewController {
     
     static func instantiateConstroller<T: UIViewController>() -> T {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        return storyBoard.instantiateViewController(identifier: "SearchViewController")
+        return storyBoard.instantiateViewController(identifier: String(describing: self))
     }
 }
 
