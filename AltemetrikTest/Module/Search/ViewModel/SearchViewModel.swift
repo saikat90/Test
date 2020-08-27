@@ -16,6 +16,9 @@ protocol SearchViewModelProtocol: ViewModel {
     func numberOfRows() -> Int
     func modelAt(index: Int) -> ArtistCellViewModel
     func isArtistEmpty() -> Bool
+    func filterAndSort(completion: @escaping (() ->()))
+    func isFilterApplied() -> Bool
+    func resetFilter()
 }
 
 protocol SortFilterDataProtocol {
@@ -23,9 +26,16 @@ protocol SortFilterDataProtocol {
 }
 
 class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
-    var sortFilterData: SortFilterData?
     private var cellModels = [ArtistCellViewModel]()
+    private var filteredModels = [ArtistCellViewModel]()
     private let network: NetworkManager?
+    var appliedFilterCompletion: (() -> ())?
+    
+    var sortFilterData: SortFilterData? {
+        didSet {
+            applyFilterAndSortLogic()
+        }
+    }
     
     required init(session: NetworkManagerProtocol) {
         self.network = NetworkManager(session: session)
@@ -44,27 +54,73 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
                 return
             }
             self?.cellModels = Set(responseModel?.results ?? [])
-                .map(ArtistCellViewModel.init).sorted(by: { (artist, nextArtist) -> Bool in
-                    guard let releaseDate = artist.releaseDate,
-                        let nextReleaseDate = nextArtist.releaseDate else {
-                            return false
-                    }
-                    return releaseDate < nextReleaseDate
-                })
+                .map(ArtistCellViewModel.init)
+            self?.applyFilterAndSortLogic()
             onCompletion(nil)
         }
     }
     
     func numberOfRows() -> Int {
-        return cellModels.count 
+        return filteredModels.count
     }
     
     func modelAt(index: Int) -> ArtistCellViewModel {
-        return cellModels[index]
+        return filteredModels[index]
     }
     
     func isArtistEmpty() -> Bool {
-        return cellModels.isEmpty
+        return filteredModels.isEmpty
     }
     
+    func isFilterApplied() -> Bool {
+        guard let filterData = sortFilterData else {
+            return false
+        }
+        return filterData.filterGenre != nil || filterData.isCollectionPriceSelected
+    }
+    
+    func applyFilterAndSortLogic() {
+        if let filterValue = sortFilterData?.filterGenre?.generKey() {
+            filteredModels = cellModels.filter({ $0.genre == filterValue})
+            filteredModels = applySortOn(models: filteredModels)
+        } else {
+            filteredModels = applySortOn(models: cellModels)
+        }
+        appliedFilterCompletion?()
+    }
+    
+    func applySortOn(models: [ArtistCellViewModel]) -> [ArtistCellViewModel] {
+        var resultantModels = [ArtistCellViewModel]()
+        if let isSortByReleasDate = sortFilterData?.isReleaseDateSelected, isSortByReleasDate {
+            resultantModels = models.sorted(by: releaseDateSortCondition)
+        }
+        if let isSortByCollectionPrice = sortFilterData?.isCollectionPriceSelected, isSortByCollectionPrice {
+            resultantModels = models.sorted(by: collectionPriceSortCondition)
+        }
+        return resultantModels
+    }
+    
+    private func releaseDateSortCondition(artist: ArtistCellViewModel, nextArtist: ArtistCellViewModel) -> Bool {
+        guard let releaseDate = artist.releaseDate,
+            let nextReleaseDate = nextArtist.releaseDate else {
+                return false
+        }
+        return releaseDate < nextReleaseDate
+    }
+    
+    private func collectionPriceSortCondition(artist: ArtistCellViewModel, nextArtist: ArtistCellViewModel) -> Bool {
+        guard let collectionPrice = artist.collectionPrice,
+            let nextCollectionPrice = nextArtist.collectionPrice else {
+                return false
+        }
+        return collectionPrice < nextCollectionPrice
+    }
+    
+    func filterAndSort(completion: @escaping (() -> ())) {
+        self.appliedFilterCompletion = completion
+    }
+    
+    func resetFilter() {
+        sortFilterData = SortFilterData()
+    }
 }

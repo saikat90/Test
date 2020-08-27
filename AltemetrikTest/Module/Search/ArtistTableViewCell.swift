@@ -15,6 +15,7 @@ class ArtistTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionNameLabel: UILabel!
     @IBOutlet weak var collectionPriceLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
     
     static let identifier = "ArtistTableViewCell"
     
@@ -25,6 +26,7 @@ class ArtistTableViewCell: UITableViewCell {
             collectionNameLabel.text = model?.collectionName ?? "No Data"
             collectionPriceLabel.text = String(model?.collectionPrice ?? 0.0)
             countLabel.text = "\(model?.numberOfTracks ?? 0)"
+            genreLabel.text = model?.genre
         }
     }
     

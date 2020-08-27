@@ -50,11 +50,13 @@ class FilterViewController: UIViewController {
     
     @IBAction func sortByCollectionPrice(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        viewModel.sortByCollectionPrice(selected: sender.isSelected )
+        releaseButton.isSelected = false
+        viewModel.sortByCollectionPrice(selected: sender.isSelected)
     }
     
     @IBAction func sortByReleaseDate(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        collectionPriceButton.isSelected = false
         viewModel.sortByReleaseDate(selected: sender.isSelected )
     }
     

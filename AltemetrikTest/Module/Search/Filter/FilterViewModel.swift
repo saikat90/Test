@@ -20,8 +20,8 @@ protocol FilterViewModelProtocol: ViewModel {
 
 struct SortFilterData {
     var filterGenre: PrimaryGenreName?
-    var isReleaseDateSelected: Bool = false
-    var isCollectionPriceSelected: Bool = true
+    var isReleaseDateSelected: Bool = true
+    var isCollectionPriceSelected: Bool = false
 }
 
 enum PrimaryGenreName: Int, CaseIterable {
@@ -29,6 +29,19 @@ enum PrimaryGenreName: Int, CaseIterable {
     case pop
     case rock
     case alternative
+    
+    func generKey() -> String {
+        switch self {
+        case .holiday:
+            return "Holiday"
+        case .pop:
+            return "Pop"
+        case .rock:
+            return "Rock"
+        default:
+            return "Alternative"
+        }
+    }
 }
 
 class FilterViewModel: FilterViewModelProtocol, SortFilterDataProtocol {
@@ -45,10 +58,16 @@ class FilterViewModel: FilterViewModelProtocol, SortFilterDataProtocol {
     
     func sortByCollectionPrice(selected: Bool) {
         sortFilterData?.isCollectionPriceSelected = selected
+        if selected {
+            sortFilterData?.isReleaseDateSelected = false
+        }
     }
     
     func sortByReleaseDate(selected: Bool) {
         sortFilterData?.isReleaseDateSelected = selected
+        if selected {
+            sortFilterData?.isCollectionPriceSelected = false
+        }
     }
     
     func enableFilterButtonWithTag() -> Int {

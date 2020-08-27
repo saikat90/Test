@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
     
+    @IBOutlet weak var resetFilter: UIButton!
     private let refreshControl = UIRefreshControl()
     private var viewModel: SearchViewModelProtocol!
     weak var delegate: SearchCoordinatorDelegate?
@@ -27,15 +28,21 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Search"
+       
         searchTableView.tableFooterView = UIView(frame: CGRect.zero)
         setUpRefreshControl()
         fetchRequest()
         setUpBarButtonItems()
+        filterAndSortApplied()
     }
     
     private func setUpRefreshControl() {
         searchTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    private func checkFilterEnableButtonState() {
+         resetFilter.isHidden = !viewModel.isFilterApplied()
     }
     
     private func setUpBarButtonItems() {
@@ -65,6 +72,14 @@ class SearchViewController: UIViewController {
         showAlert(title: "Network Error", with: message)
     }
     
+    private func filterAndSortApplied() {
+        viewModel.filterAndSort { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.checkFilterEnableButtonState()
+            strongSelf.reloadData()
+        }
+    }
+    
     @objc func refresh(_ sender: AnyObject) {
         fetchRequest()
     }
@@ -73,6 +88,10 @@ class SearchViewController: UIViewController {
         delegate?.launchFilter()
     }
     
+    @IBAction func resetFilterAction(_ sender: Any) {
+        viewModel.resetFilter()
+        checkFilterEnableButtonState()
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -83,9 +102,11 @@ extension SearchViewController: UITableViewDataSource {
                                                     y: 0,
                                                     width: tableView.bounds.size.width,
                                                     height: tableView.bounds.size.height))
-            noDataLabel.text = "No Data Available, Pull to Refresh!"
+            noDataLabel.text = "No Data Available"
             noDataLabel.textAlignment = .center
             tableView.backgroundView = noDataLabel
+        } else {
+            tableView.backgroundView = UIView()
         }
         return 1
     }

@@ -15,6 +15,7 @@ class ArtistCellViewModel: ViewModel {
     let releaseDate: Date?
     let collectionName: String?
     let collectionPrice: Double?
+    let genre: String?
     var numberOfTracks: Int = 0
     
     init(artist: Artist) {
@@ -23,5 +24,6 @@ class ArtistCellViewModel: ViewModel {
         self.collectionName = artist.collectionName
         self.collectionPrice = artist.collectionPrice
         self.releaseDate = artist.releaseDate
+        self.genre = artist.primaryGenreName
     }
 }

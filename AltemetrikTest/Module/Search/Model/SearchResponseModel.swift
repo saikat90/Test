@@ -19,6 +19,7 @@ struct Artist: Decodable, Hashable {
     let releaseDate: Date?
     let collectionName: String?
     let collectionPrice: Double?
+    let primaryGenreName: String?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(trackName)
