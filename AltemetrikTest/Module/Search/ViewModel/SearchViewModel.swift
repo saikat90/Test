@@ -8,19 +8,28 @@
 
 import Foundation
 
-protocol ViewModel {}
+protocol ViewModel: class {}
 
-protocol SearchViewModelProtocol {
+protocol SearchViewModelProtocol: ViewModel {
     init(session: NetworkManagerProtocol)
+    func fetchRequest(onCompletion: @escaping ((_ error: String?) ->()))
+    func numberOfRows() -> Int
+    func modelAt(index: Int) -> ArtistCellViewModel
+    func isArtistEmpty() -> Bool
 }
 
-class SearchViewModel: SearchViewModelProtocol {
-    
+protocol SortFilterDataProtocol {
+    var sortFilterData: SortFilterData? { get set }
+}
+
+class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
+    var sortFilterData: SortFilterData?
     private var cellModels = [ArtistCellViewModel]()
     private let network: NetworkManager?
     
     required init(session: NetworkManagerProtocol) {
         self.network = NetworkManager(session: session)
+        self.sortFilterData = SortFilterData()
     }
     
     convenience init() {
@@ -38,14 +47,14 @@ class SearchViewModel: SearchViewModelProtocol {
                 .map(ArtistCellViewModel.init).sorted(by: { (artist, nextArtist) -> Bool in
                     guard let releaseDate = artist.releaseDate,
                         let nextReleaseDate = nextArtist.releaseDate else {
-                        return false
+                            return false
                     }
                     return releaseDate < nextReleaseDate
                 })
             onCompletion(nil)
         }
     }
- 
+    
     func numberOfRows() -> Int {
         return cellModels.count 
     }
@@ -53,21 +62,9 @@ class SearchViewModel: SearchViewModelProtocol {
     func modelAt(index: Int) -> ArtistCellViewModel {
         return cellModels[index]
     }
-}
-
-class ArtistCellViewModel: ViewModel {
     
-    let artistName: String?
-    let artistTrack: String?
-    let releaseDate: Date?
-    let collectionName: String?
-    let collectionPrice: Double?
-    
-    init(artist: Artist) {
-        self.artistName = artist.artistName
-        self.artistTrack = artist.trackName
-        self.collectionName = artist.collectionName
-        self.collectionPrice = artist.collectionPrice
-        self.releaseDate = artist.releaseDate
+    func isArtistEmpty() -> Bool {
+        return cellModels.isEmpty
     }
+    
 }

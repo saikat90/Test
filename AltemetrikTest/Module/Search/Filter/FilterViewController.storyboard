@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filter-->
+        <scene sceneID="4cX-oq-5aS">
+            <objects>
+                <viewController storyboardIdentifier="FilterViewController" id="DgT-uB-GiA" customClass="FilterViewController" customModule="AltemetrikTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZQT-ZB-6I8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbX-ld-UYp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKb-H0-GMp">
+                                        <rect key="frame" x="10" y="11.5" width="76" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2oF-oW-luy"/>
+                                    <constraint firstItem="mKb-H0-GMp" firstAttribute="leading" secondItem="XbX-ld-UYp" secondAttribute="leading" constant="10" id="Jqh-VY-IAh"/>
+                                    <constraint firstItem="mKb-H0-GMp" firstAttribute="centerY" secondItem="XbX-ld-UYp" secondAttribute="centerY" id="Tbe-8P-Axz"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2iI-nL-F5C">
+                                <rect key="frame" x="0.0" y="88" width="414" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMJ-Wa-WWa">
+                                        <rect key="frame" x="0.0" y="0.0" width="197" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Collection Price">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sortByCollectionPrice:" destination="DgT-uB-GiA" eventType="touchUpInside" id="VqE-Bs-JoG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hrv-nR-F1t">
+                                        <rect key="frame" x="217" y="0.0" width="197" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Release Date">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sortByReleaseDate:" destination="DgT-uB-GiA" eventType="touchUpInside" id="CCS-GJ-0da"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OWU-Lo-W8d"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMI-Qp-Cfp">
+                                <rect key="frame" x="0.0" y="128" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHW-3k-K13">
+                                        <rect key="frame" x="10" y="11.5" width="85.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="uHW-3k-K13" firstAttribute="centerY" secondItem="yMI-Qp-Cfp" secondAttribute="centerY" id="OAZ-M6-aQS"/>
+                                    <constraint firstAttribute="height" constant="44" id="PK3-rr-ZeE"/>
+                                    <constraint firstItem="uHW-3k-K13" firstAttribute="leading" secondItem="yMI-Qp-Cfp" secondAttribute="leading" constant="10" id="tCk-BL-fxb"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fyP-Ka-y9r">
+                                <rect key="frame" x="0.0" y="172" width="414" height="74"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iMn-01-OZu">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mw-4x-rGu">
+                                                <rect key="frame" x="0.0" y="0.0" width="202" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <state key="normal" title="Holiday">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="filterByPrimaryGenreName:" destination="DgT-uB-GiA" eventType="touchUpInside" id="YyH-UC-DaJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8w-IN-e3U">
+                                                <rect key="frame" x="212" y="0.0" width="202" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <state key="normal" title="Pop">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="filterByPrimaryGenreName:" destination="DgT-uB-GiA" eventType="touchUpInside" id="tqj-be-ylV"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dw4-dd-F0t">
+                                        <rect key="frame" x="0.0" y="42" width="414" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-l9-ErI">
+                                                <rect key="frame" x="0.0" y="0.0" width="202" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <state key="normal" title="Rock">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="filterByPrimaryGenreName:" destination="DgT-uB-GiA" eventType="touchUpInside" id="bcx-3h-XM1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKg-AX-rXF">
+                                                <rect key="frame" x="212" y="0.0" width="202" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <state key="normal" title="Alternative">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="filterByPrimaryGenreName:" destination="DgT-uB-GiA" eventType="touchUpInside" id="SPe-OF-6Aj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fyP-Ka-y9r" firstAttribute="top" secondItem="yMI-Qp-Cfp" secondAttribute="bottom" id="6vL-me-jUd"/>
+                            <constraint firstItem="J46-RQ-q1B" firstAttribute="trailing" secondItem="2iI-nL-F5C" secondAttribute="trailing" id="IxU-T2-by1"/>
+                            <constraint firstItem="yMI-Qp-Cfp" firstAttribute="trailing" secondItem="J46-RQ-q1B" secondAttribute="trailing" id="Izm-Bu-4m3"/>
+                            <constraint firstItem="XbX-ld-UYp" firstAttribute="trailing" secondItem="J46-RQ-q1B" secondAttribute="trailing" id="KIQ-NC-o9F"/>
+                            <constraint firstItem="fyP-Ka-y9r" firstAttribute="leading" secondItem="J46-RQ-q1B" secondAttribute="leading" id="KrL-uR-fTW"/>
+                            <constraint firstItem="XbX-ld-UYp" firstAttribute="leading" secondItem="J46-RQ-q1B" secondAttribute="leading" id="Ptt-If-Ltx"/>
+                            <constraint firstItem="J46-RQ-q1B" firstAttribute="trailing" secondItem="fyP-Ka-y9r" secondAttribute="trailing" id="QgH-YE-hnq"/>
+                            <constraint firstItem="2iI-nL-F5C" firstAttribute="leading" secondItem="J46-RQ-q1B" secondAttribute="leading" id="WCH-1E-5f5"/>
+                            <constraint firstItem="2iI-nL-F5C" firstAttribute="top" secondItem="XbX-ld-UYp" secondAttribute="bottom" id="YiW-R1-4w4"/>
+                            <constraint firstItem="yMI-Qp-Cfp" firstAttribute="leading" secondItem="J46-RQ-q1B" secondAttribute="leading" id="bjU-kX-Nlt"/>
+                            <constraint firstItem="XbX-ld-UYp" firstAttribute="top" secondItem="J46-RQ-q1B" secondAttribute="top" id="gqx-fm-ISN"/>
+                            <constraint firstItem="yMI-Qp-Cfp" firstAttribute="top" secondItem="2iI-nL-F5C" secondAttribute="bottom" id="xk8-bn-Rm8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J46-RQ-q1B"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Filter" id="Pog-5x-r8q">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="xwG-WS-bGm">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="dissmissFilterAction:" destination="DgT-uB-GiA" id="QCG-Fy-gMw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="dd0-IE-823">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="applyFilterAction:" destination="DgT-uB-GiA" id="zoL-Ha-qe1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="alternativeButton" destination="NKg-AX-rXF" id="OXM-3K-Tld"/>
+                        <outlet property="collectionPriceButton" destination="lMJ-Wa-WWa" id="pGX-bD-fiL"/>
+                        <outlet property="holidayButton" destination="4mw-4x-rGu" id="vnu-B2-1RH"/>
+                        <outlet property="popButton" destination="O8w-IN-e3U" id="Adk-aN-scd"/>
+                        <outlet property="releaseButton" destination="Hrv-nR-F1t" id="1TC-AZ-O0m"/>
+                        <outlet property="rockButton" destination="IGz-l9-ErI" id="wgf-ve-jdo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMx-ET-DUT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2084" y="91.304347826086968"/>
+        </scene>
+    </scenes>
+</document>
