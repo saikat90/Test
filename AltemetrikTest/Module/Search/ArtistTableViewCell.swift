@@ -13,7 +13,7 @@ class ArtistTableViewCell: UITableViewCell {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var collectionNameLabel: UILabel!
-    @IBOutlet weak var collectionPriceLabel: UILabel!
+    @IBOutlet weak var trackPriceLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var sepratorView: UIView!
@@ -44,7 +44,7 @@ class ArtistTableViewCell: UITableViewCell {
         artistLabel.text = model?.artistName
         trackLabel.text = model?.artistTrack
         collectionNameLabel.text = model?.collectionName ?? "No Data"
-        collectionPriceLabel.text = String(model?.collectionPrice ?? 0.0)
+        trackPriceLabel.text = String(model?.trackPrice ?? 0.0)
         countLabel.text = "\(model?.numberOfTracks ?? 0)"
         genreLabel.text = model?.genre
         if let isAddToCartButtonEnabled = model?.isAddToCartButtonEnabled(),

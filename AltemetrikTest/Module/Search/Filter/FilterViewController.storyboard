@@ -38,14 +38,14 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMJ-Wa-WWa">
                                         <rect key="frame" x="0.0" y="0.0" width="197" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Collection Price">
+                                        <state key="normal" title="Track Price">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <state key="selected">
                                             <color key="titleColor" red="0.96235281230000003" green="0.47983764410000002" blue="0.1079889398" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="sortByCollectionPrice:" destination="DgT-uB-GiA" eventType="touchUpInside" id="VqE-Bs-JoG"/>
+                                            <action selector="sortByTrackPrice:" destination="DgT-uB-GiA" eventType="touchUpInside" id="iOx-u5-pWB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hrv-nR-F1t">
@@ -184,11 +184,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="alternativeButton" destination="NKg-AX-rXF" id="OXM-3K-Tld"/>
-                        <outlet property="collectionPriceButton" destination="lMJ-Wa-WWa" id="pGX-bD-fiL"/>
                         <outlet property="holidayButton" destination="4mw-4x-rGu" id="vnu-B2-1RH"/>
                         <outlet property="popButton" destination="O8w-IN-e3U" id="Adk-aN-scd"/>
                         <outlet property="releaseButton" destination="Hrv-nR-F1t" id="1TC-AZ-O0m"/>
                         <outlet property="rockButton" destination="IGz-l9-ErI" id="wgf-ve-jdo"/>
+                        <outlet property="trackPriceButton" destination="lMJ-Wa-WWa" id="Uwf-YW-5H5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMx-ET-DUT" userLabel="First Responder" sceneMemberID="firstResponder"/>

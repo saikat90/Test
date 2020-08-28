@@ -16,12 +16,13 @@ protocol Coordinator: class {
 
 protocol SearchCoordinatorDelegate: class {
     func launchFilter()
+    func showCart()
 }
 
 class SearchCoordinator: Coordinator {
     var displayContext: UINavigationController
     let model = SearchViewModel()
-    var filterCoordinator: FilterCoordinator?
+    var coordinator: Coordinator?
     
     init(context: UINavigationController) {
         self.displayContext = context
@@ -39,10 +40,17 @@ class SearchCoordinator: Coordinator {
 extension SearchCoordinator: SearchCoordinatorDelegate {
     
     func launchFilter() {
-        filterCoordinator = FilterCoordinator(context: displayContext)
-        filterCoordinator?.sortFilterData = model
-        filterCoordinator?.delegate = self
-        filterCoordinator?.start()
+        let filterCoordinator = FilterCoordinator(context: displayContext)
+        filterCoordinator.sortFilterData = model
+        filterCoordinator.delegate = self
+        filterCoordinator.start()
+        coordinator = filterCoordinator
+    }
+    
+    func showCart() {
+        let showCartCoordinator = ShowCartCordinator(context: displayContext, viewModel: model.showCartDetailModel())
+        showCartCoordinator.start()
+        coordinator = showCartCoordinator
     }
     
 }

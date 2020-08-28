@@ -15,10 +15,10 @@ protocol ArtistCellViewModelDelegate: class {
 class ArtistCellViewModel: ViewModel {
     
     let artistName: String?
-    let artistTrack: String?
+    var artistTrack: String?
     let releaseDate: Date?
     let collectionName: String?
-    let collectionPrice: Double?
+    var trackPrice: Double?
     let genre: String?
     weak var delegate: ArtistCellViewModelDelegate?
     
@@ -32,7 +32,7 @@ class ArtistCellViewModel: ViewModel {
         self.artistName = artist.artistName
         self.artistTrack = artist.trackName
         self.collectionName = artist.collectionName
-        self.collectionPrice = artist.collectionPrice
+        self.trackPrice = artist.trackPrice
         self.releaseDate = artist.releaseDate
         self.genre = artist.primaryGenreName
     }

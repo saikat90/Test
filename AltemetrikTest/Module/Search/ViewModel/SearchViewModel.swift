@@ -120,8 +120,8 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
     }
     
     private func collectionPriceSortCondition(artist: ArtistCellViewModel, nextArtist: ArtistCellViewModel) -> Bool {
-        guard let collectionPrice = artist.collectionPrice,
-            let nextCollectionPrice = nextArtist.collectionPrice else {
+        guard let collectionPrice = artist.trackPrice,
+            let nextCollectionPrice = nextArtist.trackPrice else {
                 return false
         }
         return collectionPrice < nextCollectionPrice
@@ -137,6 +137,11 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
     
     func resetFilter() {
         sortFilterData = SortFilterData()
+    }
+    
+    func showCartDetailModel() -> ShowCartViewModelProtocol {
+        let models = cellModels.filter({$0.numberOfTracks > 0})
+        return ShowCartViewModel(cellModels: models)
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
-    @IBOutlet weak var collectionPriceButton: UIButton!
+    @IBOutlet weak var trackPriceButton: UIButton!
     @IBOutlet weak var releaseButton: UIButton!
     @IBOutlet weak var holidayButton: UIButton!
     @IBOutlet weak var popButton: UIButton!
@@ -30,7 +30,7 @@ class FilterViewController: UIViewController {
     }
     
     private func updateFilterSortButtonState() {
-        collectionPriceButton.isSelected = viewModel.enableSortByCollectionPrice()
+        trackPriceButton.isSelected = viewModel.enableSortByCollectionPrice()
         releaseButton.isSelected = viewModel.enableSortByReleaseDate()
         guard let button = view.viewWithTag(viewModel.enableFilterButtonWithTag()) as? UIButton else {
             return
@@ -48,7 +48,7 @@ class FilterViewController: UIViewController {
         }
     }
     
-    @IBAction func sortByCollectionPrice(_ sender: UIButton) {
+    @IBAction func sortByTrackPrice(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         releaseButton.isSelected = false
         viewModel.sortByCollectionPrice(selected: sender.isSelected)
@@ -56,7 +56,7 @@ class FilterViewController: UIViewController {
     
     @IBAction func sortByReleaseDate(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        collectionPriceButton.isSelected = false
+        trackPriceButton.isSelected = false
         viewModel.sortByReleaseDate(selected: sender.isSelected )
     }
     

@@ -20,6 +20,11 @@
 		AE876BAA24F2C20D002CCD9F /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE876BA924F2C20D002CCD9F /* SearchViewModelTest.swift */; };
 		AE876BAC24F2C256002CCD9F /* NetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE876BAB24F2C256002CCD9F /* NetworkManagerTest.swift */; };
 		AE876BAE24F2C3D1002CCD9F /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = AE876BAD24F2C3D1002CCD9F /* response.json */; };
+		AE8F157424F8E00C00C71E04 /* ShowCartCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8F157324F8E00C00C71E04 /* ShowCartCordinator.swift */; };
+		AE8F157B24F8E78400C71E04 /* ShowCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8F157A24F8E78400C71E04 /* ShowCartViewController.swift */; };
+		AE8F157D24F8E79C00C71E04 /* ShowCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8F157C24F8E79C00C71E04 /* ShowCartViewModel.swift */; };
+		AE8F157F24F8E7F400C71E04 /* ShowCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE8F157E24F8E7F400C71E04 /* ShowCartViewController.storyboard */; };
+		AE8F158124F902A000C71E04 /* ShowCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8F158024F902A000C71E04 /* ShowCartTableViewCell.swift */; };
 		AEB3192524F7B43F009DDD9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB3192424F7B43F009DDD9F /* ViewController.swift */; };
 		AEB3193124F7C276009DDD9F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB3192824F7C275009DDD9F /* SearchViewModel.swift */; };
 		AEB3193224F7C276009DDD9F /* ArtistCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB3192924F7C275009DDD9F /* ArtistCellViewModel.swift */; };
@@ -62,6 +67,11 @@
 		AE876BA924F2C20D002CCD9F /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
 		AE876BAB24F2C256002CCD9F /* NetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTest.swift; sourceTree = "<group>"; };
 		AE876BAD24F2C3D1002CCD9F /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		AE8F157324F8E00C00C71E04 /* ShowCartCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCartCordinator.swift; sourceTree = "<group>"; };
+		AE8F157A24F8E78400C71E04 /* ShowCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCartViewController.swift; sourceTree = "<group>"; };
+		AE8F157C24F8E79C00C71E04 /* ShowCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCartViewModel.swift; sourceTree = "<group>"; };
+		AE8F157E24F8E7F400C71E04 /* ShowCartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowCartViewController.storyboard; sourceTree = "<group>"; };
+		AE8F158024F902A000C71E04 /* ShowCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCartTableViewCell.swift; sourceTree = "<group>"; };
 		AEB3192424F7B43F009DDD9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEB3192824F7C275009DDD9F /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AEB3192924F7C275009DDD9F /* ArtistCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCellViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +172,11 @@
 		AE8F157224F8D8C200C71E04 /* ShowCart */ = {
 			isa = PBXGroup;
 			children = (
+				AE8F157324F8E00C00C71E04 /* ShowCartCordinator.swift */,
+				AE8F157A24F8E78400C71E04 /* ShowCartViewController.swift */,
+				AE8F157C24F8E79C00C71E04 /* ShowCartViewModel.swift */,
+				AE8F157E24F8E7F400C71E04 /* ShowCartViewController.storyboard */,
+				AE8F158024F902A000C71E04 /* ShowCartTableViewCell.swift */,
 			);
 			path = ShowCart;
 			sourceTree = "<group>";
@@ -301,6 +316,7 @@
 				AE876B6E24F2AE03002CCD9F /* LaunchScreen.storyboard in Resources */,
 				AE876B6B24F2AE03002CCD9F /* Assets.xcassets in Resources */,
 				AEB3193624F7C276009DDD9F /* SearchViewController.storyboard in Resources */,
+				AE8F157F24F8E7F400C71E04 /* ShowCartViewController.storyboard in Resources */,
 				AEB3193E24F7C61D009DDD9F /* FilterViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,12 +337,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEB3194524F8171A009DDD9F /* FilterViewModel.swift in Sources */,
+				AE8F157D24F8E79C00C71E04 /* ShowCartViewModel.swift in Sources */,
 				AE876B8724F2B635002CCD9F /* NetworkManager.swift in Sources */,
+				AE8F158124F902A000C71E04 /* ShowCartTableViewCell.swift in Sources */,
 				AE876B8924F2B635002CCD9F /* NetworkError.swift in Sources */,
 				AEB3193324F7C276009DDD9F /* SearchViewController.swift in Sources */,
+				AE8F157B24F8E78400C71E04 /* ShowCartViewController.swift in Sources */,
 				AEB3193424F7C276009DDD9F /* ArtistTableViewCell.swift in Sources */,
 				AE876B8624F2B635002CCD9F /* NetworkResponse.swift in Sources */,
 				AEB3192524F7B43F009DDD9F /* ViewController.swift in Sources */,
+				AE8F157424F8E00C00C71E04 /* ShowCartCordinator.swift in Sources */,
 				AEB3193524F7C276009DDD9F /* SearchCoordinator.swift in Sources */,
 				AEB3193124F7C276009DDD9F /* SearchViewModel.swift in Sources */,
 				AEB3193224F7C276009DDD9F /* ArtistCellViewModel.swift in Sources */,

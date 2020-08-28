@@ -59,6 +59,7 @@ class SearchViewController: UIViewController {
         
         let cartButton = UIButton(type: .system)
         cartButton.frame = CGRect(x: 0.0, y: 0.0, width: 20, height: 20)
+        cartButton.addTarget(self, action: #selector(showCart), for: .touchUpInside)
         cartButton.setImage(UIImage(named:"cart"), for: .normal)
         let cartBarItem = UIBarButtonItem(customView: cartButton)
         cartBarItem.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
@@ -105,6 +106,10 @@ class SearchViewController: UIViewController {
     
     @objc func launchFilter() {
         delegate?.launchFilter()
+    }
+    
+    @objc func showCart() {
+        delegate?.showCart()
     }
     
     @IBAction func resetFilterAction(_ sender: Any) {

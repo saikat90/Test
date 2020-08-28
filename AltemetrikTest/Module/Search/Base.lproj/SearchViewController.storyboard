@@ -38,22 +38,22 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="256" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQF-Hj-slc">
-                                                                    <rect key="frame" x="0.0" y="30.5" width="390" height="17"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeI-uC-V9U">
+                                                                    <rect key="frame" x="0.0" y="30.5" width="390" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rb0-JH-mAO">
-                                                                    <rect key="frame" x="0.0" y="57.5" width="390" height="15.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <rect key="frame" x="0.0" y="58.5" width="390" height="14.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzP-mf-gHa">
                                                                     <rect key="frame" x="0.0" y="83" width="390" height="17"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeI-uC-V9U">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="256" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQF-Hj-slc">
                                                                             <rect key="frame" x="0.0" y="0.0" width="195" height="17"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <nil key="textColor"/>
@@ -111,11 +111,11 @@
                                                     <outlet property="addToCartButton" destination="UR8-CU-1uB" id="eaL-dB-Ita"/>
                                                     <outlet property="artistLabel" destination="FMR-d5-bY9" id="Sou-SO-cxx"/>
                                                     <outlet property="collectionNameLabel" destination="XeI-uC-V9U" id="5bF-7h-z1L"/>
-                                                    <outlet property="collectionPriceLabel" destination="aKl-rw-siV" id="TZ9-Wn-rFP"/>
                                                     <outlet property="countLabel" destination="7EI-5r-zDP" id="0gq-6m-b7P"/>
                                                     <outlet property="genreLabel" destination="Rb0-JH-mAO" id="Zef-bF-vxF"/>
                                                     <outlet property="sepratorView" destination="Ada-Ku-fr8" id="6uX-q9-WFx"/>
                                                     <outlet property="trackLabel" destination="EQF-Hj-slc" id="NMq-SU-KKR"/>
+                                                    <outlet property="trackPriceLabel" destination="aKl-rw-siV" id="kto-00-tZE"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
