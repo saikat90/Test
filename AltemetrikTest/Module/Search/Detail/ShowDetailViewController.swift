@@ -11,7 +11,7 @@ import UIKit
 private let noData = "No Data"
 
 class ShowDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var collectionNamelabel: UILabel!
     @IBOutlet weak var trackNameLabel: UILabel!
@@ -38,7 +38,15 @@ class ShowDetailViewController: UIViewController {
         primaryGenreLabel.text =  viewModel?.primaryGenre.ifEmptyOrNil(defaultTo: noData)
         countryLabel.text = viewModel?.country.ifEmptyOrNil(defaultTo: noData)
         releaseDatelabel.text = viewModel?.formattedDate.ifEmptyOrNil(defaultTo: noData)
+        if let imageData = viewModel?.imageData {
+            artistImageView.image = UIImage(data: imageData)
+        } else {
+            viewModel?.downLoadImageFromString(onCompletion: {[weak self] data in
+                if let imgData = data {
+                    self?.artistImageView.image = UIImage(data: imgData)
+                }
+            })
+        }
     }
-    
     
 }

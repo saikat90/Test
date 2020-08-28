@@ -21,7 +21,8 @@ class ArtistCellViewModel: ViewModel {
     let collectionPrice: Double?
     var trackPrice: Double?
     let genre: String?
-    var imageUrl: String?
+    let imageUrl: String?
+    var imageData: Data?
     var primaryGenre: String?
     var country: String?
     weak var delegate: ArtistCellViewModelDelegate?
