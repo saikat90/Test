@@ -90,7 +90,7 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
         return filterData.filterGenre != nil || filterData.isCollectionPriceSelected
     }
     
-    func applyFilterAndSortLogic() {
+    private func applyFilterAndSortLogic() {
         if let filterValue = sortFilterData?.filterGenre?.generKey() {
             filteredModels = cellModels.filter({ $0.genre == filterValue})
             filteredModels = applySortOn(models: filteredModels)
@@ -100,7 +100,7 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
         appliedFilterCompletion?()
     }
     
-    func applySortOn(models: [ArtistCellViewModel]) -> [ArtistCellViewModel] {
+    private func applySortOn(models: [ArtistCellViewModel]) -> [ArtistCellViewModel] {
         var resultantModels = [ArtistCellViewModel]()
         if let isSortByReleasDate = sortFilterData?.isReleaseDateSelected, isSortByReleasDate {
             resultantModels = models.sorted(by: releaseDateSortCondition)
