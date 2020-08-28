@@ -74,6 +74,9 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="390" height="32"/>
                                                                             <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <state key="normal" title="Add to Cart"/>
+                                                                            <connections>
+                                                                                <action selector="enableAddToCartAction:" destination="4Ed-Km-5Ar" eventType="touchUpInside" id="bUd-g2-LWq"/>
+                                                                            </connections>
                                                                         </button>
                                                                         <stepper hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="BV7-XG-tii">
                                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="32"/>
@@ -104,11 +107,14 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="addStepper" destination="BV7-XG-tii" id="hu9-zn-gGg"/>
+                                                    <outlet property="addToCartButton" destination="UR8-CU-1uB" id="eaL-dB-Ita"/>
                                                     <outlet property="artistLabel" destination="FMR-d5-bY9" id="Sou-SO-cxx"/>
                                                     <outlet property="collectionNameLabel" destination="XeI-uC-V9U" id="5bF-7h-z1L"/>
                                                     <outlet property="collectionPriceLabel" destination="aKl-rw-siV" id="TZ9-Wn-rFP"/>
                                                     <outlet property="countLabel" destination="7EI-5r-zDP" id="0gq-6m-b7P"/>
                                                     <outlet property="genreLabel" destination="Rb0-JH-mAO" id="Zef-bF-vxF"/>
+                                                    <outlet property="sepratorView" destination="Ada-Ku-fr8" id="6uX-q9-WFx"/>
                                                     <outlet property="trackLabel" destination="EQF-Hj-slc" id="NMq-SU-KKR"/>
                                                 </connections>
                                             </tableViewCell>

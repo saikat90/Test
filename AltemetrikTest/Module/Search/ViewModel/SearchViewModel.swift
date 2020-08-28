@@ -17,6 +17,7 @@ protocol SearchViewModelProtocol: ViewModel {
     func modelAt(index: Int) -> ArtistCellViewModel
     func isArtistEmpty() -> Bool
     func filterAndSort(completion: @escaping (() ->()))
+    func trackAddedInCart(completion: @escaping ((_ total: Int) ->()))
     func isFilterApplied() -> Bool
     func resetFilter()
 }
@@ -29,13 +30,21 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
     private var cellModels = [ArtistCellViewModel]()
     private var filteredModels = [ArtistCellViewModel]()
     private let network: NetworkManager?
-    var appliedFilterCompletion: (() -> ())?
+    private var appliedFilterCompletion: (() -> ())?
+    private var updateCartCompletion: ((_ total: Int) ->())?
     
     var sortFilterData: SortFilterData? {
         didSet {
             applyFilterAndSortLogic()
         }
     }
+    
+    private var totalNumber = 0 {
+        didSet {
+            updateCartCompletion?(totalNumber)
+        }
+    }
+    
     
     required init(session: NetworkManagerProtocol) {
         self.network = NetworkManager(session: session)
@@ -65,7 +74,9 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
     }
     
     func modelAt(index: Int) -> ArtistCellViewModel {
-        return filteredModels[index]
+        let cellModel = filteredModels[index]
+        cellModel.delegate = self
+        return cellModel
     }
     
     func isArtistEmpty() -> Bool {
@@ -120,7 +131,19 @@ class SearchViewModel: SearchViewModelProtocol, SortFilterDataProtocol {
         self.appliedFilterCompletion = completion
     }
     
+    func trackAddedInCart(completion: @escaping ((_ total: Int) ->())) {
+        updateCartCompletion = completion
+    }
+    
     func resetFilter() {
         sortFilterData = SortFilterData()
     }
+}
+
+extension SearchViewModel: ArtistCellViewModelDelegate {
+    
+    func didUpdateNumberOfTracks() {
+        totalNumber = cellModels.reduce(0, {$0 + $1.numberOfTracks})
+    }
+    
 }

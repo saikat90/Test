@@ -16,17 +16,15 @@ class ArtistTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionPriceLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var sepratorView: UIView!
+    @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var addStepper: UIStepper!
     
     static let identifier = "ArtistTableViewCell"
     
     private var model: ArtistCellViewModel? {
         didSet {
-            artistLabel.text = model?.artistName
-            trackLabel.text = model?.artistTrack
-            collectionNameLabel.text = model?.collectionName ?? "No Data"
-            collectionPriceLabel.text = String(model?.collectionPrice ?? 0.0)
-            countLabel.text = "\(model?.numberOfTracks ?? 0)"
-            genreLabel.text = model?.genre
+            updateWithModel()
         }
     }
     
@@ -42,9 +40,53 @@ class ArtistTableViewCell: UITableViewCell {
         self.model = model
     }
     
+    func updateWithModel() {
+        artistLabel.text = model?.artistName
+        trackLabel.text = model?.artistTrack
+        collectionNameLabel.text = model?.collectionName ?? "No Data"
+        collectionPriceLabel.text = String(model?.collectionPrice ?? 0.0)
+        countLabel.text = "\(model?.numberOfTracks ?? 0)"
+        genreLabel.text = model?.genre
+        if let isAddToCartButtonEnabled = model?.isAddToCartButtonEnabled(),
+            isAddToCartButtonEnabled {
+            addToCartButton.isHidden = false
+            hideCartLayout()
+        } else {
+            addToCartButton.isHidden = true
+            updateCartLayout()
+        }
+    }
+    
+    private func updateCartLayout() {
+        sepratorView.isHidden = false
+        countLabel.isHidden = false
+        addStepper.isHidden = false
+    }
+    
+    private func hideCartLayout() {
+        sepratorView.isHidden = true
+        countLabel.isHidden = true
+        addStepper.isHidden = true
+    }
+    
+    private func updateStepperWithModel() {
+        model?.numberOfTracks = Int(addStepper.value)
+        countLabel.text = "\(Int(addStepper.value))"
+        if addStepper.value == 0 {
+            hideCartLayout()
+            addToCartButton.isHidden = false
+        }
+    }
+    
     @IBAction func addToCartAction(_ stepper: UIStepper) {
-        model?.numberOfTracks = Int(stepper.value)
-        countLabel.text = "\(Int(stepper.value))"
+        updateStepperWithModel()
+    }
+    
+    @IBAction func enableAddToCartAction(_ sender: Any) {
+        addToCartButton.isHidden = true
+        addStepper.value = 1.0
+        updateStepperWithModel()
+        updateCartLayout()
     }
     
 }

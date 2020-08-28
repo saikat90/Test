@@ -8,6 +8,10 @@
 
 import UIKit
 
+private let searchTitle = "Search"
+private let networkErrorTitle = "Network Error"
+private let noDataAvailable = "No Data Available"
+
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
@@ -27,13 +31,13 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Search"
-       
+        title = searchTitle
         searchTableView.tableFooterView = UIView(frame: CGRect.zero)
         setUpRefreshControl()
         fetchRequest()
         setUpBarButtonItems()
         filterAndSortApplied()
+        addToCartForTrack()
     }
     
     private func setUpRefreshControl() {
@@ -42,16 +46,25 @@ class SearchViewController: UIViewController {
     }
     
     private func checkFilterEnableButtonState() {
-         resetFilter.isHidden = !viewModel.isFilterApplied()
+        resetFilter.isHidden = !viewModel.isFilterApplied()
     }
     
     private func setUpBarButtonItems() {
         let filterImage = UIImage(named: "fliterIcon")
         let leftBarItem = UIBarButtonItem(image: filterImage,
-                                           style: .done,
-                                           target: self,
-                                           action: #selector(launchFilter))
+                                          style: .done,
+                                          target: self,
+                                          action: #selector(launchFilter))
         navigationItem.leftBarButtonItem = leftBarItem
+        
+        let cartButton = UIButton(type: .system)
+        cartButton.frame = CGRect(x: 0.0, y: 0.0, width: 20, height: 20)
+        cartButton.setImage(UIImage(named:"cart"), for: .normal)
+        let cartBarItem = UIBarButtonItem(customView: cartButton)
+        cartBarItem.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        cartBarItem.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        navigationItem.rightBarButtonItem = cartBarItem
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func fetchRequest() {
@@ -69,7 +82,7 @@ class SearchViewController: UIViewController {
     }
     
     private func showNetworkAlert(_ message: String) {
-        showAlert(title: "Network Error", with: message)
+        showAlert(title: networkErrorTitle, with: message)
     }
     
     private func filterAndSortApplied() {
@@ -77,6 +90,12 @@ class SearchViewController: UIViewController {
             guard let strongSelf = self else { return }
             strongSelf.checkFilterEnableButtonState()
             strongSelf.reloadData()
+        }
+    }
+    
+    private func addToCartForTrack() {
+        viewModel.trackAddedInCart {[weak self] value in
+             self?.navigationItem.rightBarButtonItem?.isEnabled = value != 0
         }
     }
     
@@ -102,7 +121,7 @@ extension SearchViewController: UITableViewDataSource {
                                                     y: 0,
                                                     width: tableView.bounds.size.width,
                                                     height: tableView.bounds.size.height))
-            noDataLabel.text = "No Data Available"
+            noDataLabel.text = noDataAvailable
             noDataLabel.textAlignment = .center
             tableView.backgroundView = noDataLabel
         } else {

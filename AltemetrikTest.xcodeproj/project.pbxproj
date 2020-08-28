@@ -159,6 +159,13 @@
 			path = AltemetrikTestTests;
 			sourceTree = "<group>";
 		};
+		AE8F157224F8D8C200C71E04 /* ShowCart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShowCart;
+			sourceTree = "<group>";
+		};
 		AEB3192324F7B42B009DDD9F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +180,7 @@
 				AEB3193824F7C560009DDD9F /* Filter */,
 				AEB3192F24F7C276009DDD9F /* Model */,
 				AEB3192724F7C275009DDD9F /* ViewModel */,
+				AE8F157224F8D8C200C71E04 /* ShowCart */,
 				AEB3192A24F7C275009DDD9F /* SearchViewController.swift */,
 				AEB3192B24F7C275009DDD9F /* ArtistTableViewCell.swift */,
 				AEB3192C24F7C275009DDD9F /* SearchCoordinator.swift */,

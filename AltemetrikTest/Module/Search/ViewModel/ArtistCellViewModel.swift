@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol ArtistCellViewModelDelegate: class {
+    func didUpdateNumberOfTracks()
+}
+
 class ArtistCellViewModel: ViewModel {
     
     let artistName: String?
@@ -16,7 +20,13 @@ class ArtistCellViewModel: ViewModel {
     let collectionName: String?
     let collectionPrice: Double?
     let genre: String?
-    var numberOfTracks: Int = 0
+    weak var delegate: ArtistCellViewModelDelegate?
+    
+    var numberOfTracks: Int = 0 {
+        didSet {
+            delegate?.didUpdateNumberOfTracks()
+        }
+    }
     
     init(artist: Artist) {
         self.artistName = artist.artistName
@@ -25,5 +35,9 @@ class ArtistCellViewModel: ViewModel {
         self.collectionPrice = artist.collectionPrice
         self.releaseDate = artist.releaseDate
         self.genre = artist.primaryGenreName
+    }
+    
+    func isAddToCartButtonEnabled() -> Bool {
+        return numberOfTracks == 0
     }
 }
