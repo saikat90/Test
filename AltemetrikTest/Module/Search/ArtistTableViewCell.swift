@@ -47,6 +47,7 @@ class ArtistTableViewCell: UITableViewCell {
         trackPriceLabel.text = String(model?.trackPrice ?? 0.0)
         countLabel.text = "\(model?.numberOfTracks ?? 0)"
         genreLabel.text = model?.genre
+        addStepper.value = Double(model?.numberOfTracks ?? 0)
         if let isAddToCartButtonEnabled = model?.isAddToCartButtonEnabled(),
             isAddToCartButtonEnabled {
             addToCartButton.isHidden = false
