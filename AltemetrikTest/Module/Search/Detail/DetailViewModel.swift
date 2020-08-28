@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol ImageDownloadingProtocol: class {
+    func downLoadImageFromString(onCompletion: @escaping (_ data: Data?) -> ())
+}
+
 protocol DetailViewModelProtocol: ViewModel, ImageDownloadingProtocol {
     var artistName: String? { get }
     var artistTrack: String? { get }
@@ -20,10 +24,6 @@ protocol DetailViewModelProtocol: ViewModel, ImageDownloadingProtocol {
     var formattedDate: String? { get }
 }
 
-protocol ImageDownloadingProtocol: class {
-    func downLoadImageFromString(onCompletion: @escaping (_ data: Data?) -> ())
-}
-
 extension ArtistCellViewModel: DetailViewModelProtocol {
     
     var formattedDate: String? {
@@ -34,9 +34,6 @@ extension ArtistCellViewModel: DetailViewModelProtocol {
         }
         return dateFormatter.string(from: date)
     }
-}
-
-extension ArtistCellViewModel {
     
     func downLoadImageFromString(onCompletion: @escaping (Data?) -> ()) {
         guard imageData == nil,
