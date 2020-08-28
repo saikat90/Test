@@ -166,7 +166,7 @@
 		AE876B9024F2BF42002CCD9F /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				AEB3192624F7C275009DDD9F /* Search */,
+				AEB3192624F7C275009DDD9F /* Itunes */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -208,6 +208,17 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		AE8F15C424F96BD900C71E04 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				AEB3192A24F7C275009DDD9F /* SearchViewController.swift */,
+				AEB3192B24F7C275009DDD9F /* ArtistTableViewCell.swift */,
+				AEB3192C24F7C275009DDD9F /* SearchCoordinator.swift */,
+				AEB3192D24F7C275009DDD9F /* SearchViewController.storyboard */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		AEB3192324F7B42B009DDD9F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,20 +228,17 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		AEB3192624F7C275009DDD9F /* Search */ = {
+		AEB3192624F7C275009DDD9F /* Itunes */ = {
 			isa = PBXGroup;
 			children = (
+				AE8F15C424F96BD900C71E04 /* Search */,
 				AEB3193824F7C560009DDD9F /* Filter */,
 				AEB3192F24F7C276009DDD9F /* Model */,
 				AE8F157224F8D8C200C71E04 /* ShowCart */,
 				AEB3192724F7C275009DDD9F /* ViewModel */,
 				AE8F158624F91A9D00C71E04 /* Detail */,
-				AEB3192A24F7C275009DDD9F /* SearchViewController.swift */,
-				AEB3192B24F7C275009DDD9F /* ArtistTableViewCell.swift */,
-				AEB3192C24F7C275009DDD9F /* SearchCoordinator.swift */,
-				AEB3192D24F7C275009DDD9F /* SearchViewController.storyboard */,
 			);
-			path = Search;
+			path = Itunes;
 			sourceTree = "<group>";
 		};
 		AEB3192724F7C275009DDD9F /* ViewModel */ = {
