@@ -40,6 +40,13 @@ class SearchViewController: UIViewController {
         addToCartForTrack()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let selectedIndexPath = searchTableView.indexPathForSelectedRow {
+            searchTableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+    }
+    
     private func setUpRefreshControl() {
         searchTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -96,11 +103,12 @@ class SearchViewController: UIViewController {
     
     private func addToCartForTrack() {
         viewModel.trackAddedInCart {[weak self] value in
-             self?.navigationItem.rightBarButtonItem?.isEnabled = value != 0
+            self?.navigationItem.rightBarButtonItem?.isEnabled = value != 0
         }
     }
     
     @objc func refresh(_ sender: AnyObject) {
+        navigationItem.rightBarButtonItem?.isEnabled = false
         fetchRequest()
     }
     
@@ -160,5 +168,16 @@ extension SearchViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        UIView.animate(withDuration: 0.4) {
+            cell.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.modelAt(index: indexPath.row)
+        delegate?.showDetailControllerWith(model: model)
+    }
 }
 

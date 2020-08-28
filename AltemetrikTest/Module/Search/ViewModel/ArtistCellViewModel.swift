@@ -18,8 +18,12 @@ class ArtistCellViewModel: ViewModel {
     var artistTrack: String?
     let releaseDate: Date?
     let collectionName: String?
+    let collectionPrice: Double?
     var trackPrice: Double?
     let genre: String?
+    var imageUrl: String?
+    var primaryGenre: String?
+    var country: String?
     weak var delegate: ArtistCellViewModelDelegate?
     
     var numberOfTracks: Int = 0 {
@@ -35,6 +39,10 @@ class ArtistCellViewModel: ViewModel {
         self.trackPrice = artist.trackPrice
         self.releaseDate = artist.releaseDate
         self.genre = artist.primaryGenreName
+        self.imageUrl = artist.artworkUrl100
+        self.collectionPrice = artist.collectionPrice
+        self.primaryGenre = artist.primaryGenreName
+        self.country = artist.country
     }
     
     func isAddToCartButtonEnabled() -> Bool {

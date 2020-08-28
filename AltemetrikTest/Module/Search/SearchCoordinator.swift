@@ -17,6 +17,7 @@ protocol Coordinator: class {
 protocol SearchCoordinatorDelegate: class {
     func launchFilter()
     func showCart()
+    func showDetailControllerWith(model: DetailViewModelProtocol)
 }
 
 class SearchCoordinator: Coordinator {
@@ -34,7 +35,7 @@ class SearchCoordinator: Coordinator {
         searchController.setUpWith(model: model)
         displayContext.pushViewController(searchController, animated: true)
     }
-
+    
 }
 
 extension SearchCoordinator: SearchCoordinatorDelegate {
@@ -53,6 +54,12 @@ extension SearchCoordinator: SearchCoordinatorDelegate {
         coordinator = showCartCoordinator
     }
     
+    func showDetailControllerWith(model: DetailViewModelProtocol) {
+        let showDetailCoordinator = ShowDetailCoordinator(displayContext: displayContext,
+                                                          model: model)
+        showDetailCoordinator.start()
+        coordinator = showDetailCoordinator
+    }
 }
 
 extension SearchCoordinator: FilterCoordinatorDelegate {
